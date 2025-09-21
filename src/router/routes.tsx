@@ -10,7 +10,6 @@ interface ProtectedRouteProps {
   element: React.ReactNode;
 }
 
-// Protected Route Component (Auth Guard)
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
   if (!useAuth()) {
     return <Navigate to="/login" />;
