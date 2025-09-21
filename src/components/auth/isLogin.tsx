@@ -1,12 +1,20 @@
 import { useNavigate } from "react-router";
 
- const isLoggedIn = () => {
-  const navigate = useNavigate();  
-
-  const isLogin = localStorage.getItem("isLoggedIn");
+const useAuth = () => {
+  const navigate = useNavigate();
   
-  if (!isLogin) {
-    navigate("/login");  
-  }
+  const isLoggedIn = (): boolean => {
+    const isLogin = localStorage.getItem("isLoggedIn");
+    
+    if (!isLogin) {
+      navigate("/login");
+      return false;
+    }
+
+    return true;
+  };
+
+  return { isLoggedIn };
 };
-export default isLoggedIn
+
+export default useAuth;

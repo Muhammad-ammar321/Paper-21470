@@ -4,7 +4,7 @@ import Signup from '../pages/signup/Signup';
 import Ecommerce from '../pages/Product/Product';
 import Login from '../pages/login/Login';
 import DetailPage from '../pages/Product/DetailPage';  
-import  isLoggedIn  from '../components/auth/isLogin';
+import  useAuth  from '../components/auth/isLogin';
 import { Navigate } from 'react-router';
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -12,7 +12,7 @@ interface ProtectedRouteProps {
 
 // Protected Route Component (Auth Guard)
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
-  if (!isLoggedIn()) {
+  if (!useAuth()) {
     return <Navigate to="/login" />;
   }
   return <>{element}</>;
