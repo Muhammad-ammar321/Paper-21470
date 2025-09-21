@@ -6,13 +6,16 @@ import Login from '../pages/login/Login';
 import DetailPage from '../pages/Product/DetailPage';  
 import  isLoggedIn  from '../components/auth/isLogin';
 import { Navigate } from 'react-router';
+interface ProtectedRouteProps {
+  element: React.ReactNode;
+}
 
 // Protected Route Component (Auth Guard)
-const ProtectedRoute = ({ element }) => {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
   if (!isLoggedIn()) {
     return <Navigate to="/login" />;
   }
-  return element;
+  return <>{element}</>;
 };
 
 export const routes = createBrowserRouter([
